@@ -1,4 +1,5 @@
 import React from 'react';
+import './Testimonial.css';
 import wilson from '../../../images/people-1.png';
 import ema from '../../../images/people-2.png';
 import aliza from '../../../images/people-3.png';

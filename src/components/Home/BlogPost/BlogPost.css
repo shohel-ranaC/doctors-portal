@@ -6,6 +6,6 @@
     box-shadow: 4px 4px 15px gray;
 }
 .blogPost-card:hover{
-    background-image: linear-gradient(-45deg, #2fbebe, rgb(243, 195, 105));
+    background-image: linear-gradient(75deg, #19D3AE,#0fcfec);
     color: white;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import wilson from '../../../images/people-1.png';
 import BlogPost from './../BlogPost/BlogPost';
+import './Blogs.css';
 
 const blogData = [
     {
