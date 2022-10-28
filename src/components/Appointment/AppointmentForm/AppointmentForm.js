@@ -14,9 +14,28 @@ const customStyles = {
 };
 Modal.setAppElement('#root');
 
-const AppointmentForm = ({modalIsOpen, closeModal, appointmentOn }) => {
+const AppointmentForm = ({modalIsOpen, closeModal, appointmentOn, date}) => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    data.service = appointmentOn;
+    data.date = date;
+    data.created = new Date();
+
+    fetch('http://localhost:5000/addAppointment', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(data) 
+      
+    })
+    .then(res => res.json())
+    .then(success => {
+       if (success) {
+        closeModal();
+        alert('Appointment created successfully');
+        console.log('create database successfully');
+      }
+     })
+  }
 
     return (
         <div>
@@ -28,23 +47,24 @@ const AppointmentForm = ({modalIsOpen, closeModal, appointmentOn }) => {
         contentLabel="Example Modal"
       >
         <h2 className='text-center text-header'>{appointmentOn}</h2>
+       <p className='text-secondary text-center'><small>On {date.toDateString()}</small></p>
        <form className='p-5' onSubmit={handleSubmit(onSubmit)}>
 
        <div className='form-group'>
-          <input type="text"  name='name' placeholder='Enter your name' className='form-control my-3' />
+          <input {...register('name', {required: true})} type="text"  name='name' placeholder='Enter your name' className='form-control my-3'/>
           {errors.name && <span className="text-danger">This field is required</span>}
         </div>
         <div className='form-group'>
-          <input type="text" name='phone' placeholder='Enter your phone number' className='form-control my-3' />
+          <input {...register('phone', {required: true})} type="text" name='phone' placeholder='Enter your phone number' className='form-control my-3' />
           {errors.phone && <span className="text-danger">This field is required</span>}
         </div>
         <div className='form-group'>
-          <input type="email" name='email' placeholder='Enter your email' className='form-control my-2' />
+          <input {...register('email', {required: true})} type="email" name='email' placeholder='Enter your email' className='form-control my-2'/>
           {errors.email && <span className="text-danger">This field is required</span>}
         </div>
         <div className='form-group row'>
           <div className='col-md-4'>
-          <select className="form-control my-2" name='gender' >
+          <select className="form-control my-2" name='gender' {...register('gender', {required: true})}>
             <option disabled={true} value='Not Set'>Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -53,11 +73,11 @@ const AppointmentForm = ({modalIsOpen, closeModal, appointmentOn }) => {
          {errors.gender && <span className="text-danger">This field is required</span>}
           </div>
           <div className='col-4'>
-          <input type="number"  name='age' placeholder='Enter your age' className='form-control my-2' />
+          <input {...register('age', {required: true})} type="number"  name='age' placeholder='Age' className='form-control my-2'/>
           {errors.age && <span className="text-danger">This field is required</span>}
         </div>
         <div className='col-4'>
-          <input type="number"  name='weight' placeholder='Enter your weight' className='form-control my-2' />
+          <input type="number" {...register('weight', {required: true})} name='weight' placeholder='Weight' className='form-control my-2' />
           {errors.weight && <span className="text-danger">This field is required</span>}
         </div>
     </div>

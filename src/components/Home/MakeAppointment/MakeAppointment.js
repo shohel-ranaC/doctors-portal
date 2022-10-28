@@ -13,7 +13,7 @@ const MakeAppointment = () => {
                        <div className='col-md-7 text-white py-5 text-color'>
                         <h5 className='text-primary'>APPOINTMENT</h5>
                         <h1 className='my-4'>Make an Appointment <br/> Today</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex harum eaque ea. Nam saepe laborum libero. Vitae, praesentium!
+                        <p className='text-secondary'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex harum eaque ea. Nam saepe laborum libero. Vitae, praesentium!
                          Tempora, aspernatur inventore. Quis, provident? Eius unde cumque, magni veritatis
                          ut explicabo.
                          </p>

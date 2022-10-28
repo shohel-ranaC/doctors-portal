@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -10,22 +11,22 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item me-5">
-                <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                <Link className='nav-link mr-5' to='/'>HOME</Link>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link" href="#about">About</a>
+              <Link className='nav-link mr-5' to='/dashboard/patients'>PATIENT</Link>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link" href="#service">Dental Services</a>
+              <Link className='nav-link mr-5' to='/dashboard/appointment'>DASHBOARD</Link>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link text-white" href="#review">Reviews</a>
+              <Link className='nav-link mr-5' to='/admin'>ADMIN</Link>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link text-white" href="#blog">Blog</a>
+              <Link className='nav-link mr-5' to='/blog'>BLOG</Link>
               </li>
               <li class="nav-item me-5">
-                <a class="nav-link text-white" href="#contact">Contact Us</a>
+              <Link className='nav-link mr-5' to='/contact us'>CONTACT US</Link>
               </li>
             </ul>
           </div>
